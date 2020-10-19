@@ -1,3 +1,19 @@
 module.exports = function check(str, bracketsConfig) {
-  // your solution
+    if (str.length % 2 !== 0) {
+        return false;
+    }
+
+    repeatCheck();
+
+    function repeatCheck() {
+        bracketsConfig.forEach(el => {
+            el = el.join('');
+            if (str.includes(el)) {
+                str = str.replace(el, '');
+                repeatCheck();
+            }
+        });
+    }
+
+    return str.length === 0;
 }
